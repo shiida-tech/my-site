@@ -1,0 +1,59 @@
+<% content_for :title, "Shiida Tetsuro | Software Engineer" %>
+
+<section class="bg-gradient-to-br from-slate-900 to-slate-700 text-white">
+  <div class="container mx-auto px-6 py-24 flex flex-col items-center text-center">
+    <%= image_tag "profile-illustration.png", class: "w-28 h-28 rounded-full object-cover mb-6", alt: "Shiida Tetsuro" %>
+    <h1 class="text-4xl font-bold tracking-tight mb-2">Shiida Tetsuro</h1>
+    <p class="text-slate-300 text-lg mb-6">Software Engineer</p>
+    <p class="text-slate-400 max-w-xl leading-relaxed">
+      福岡在住のエンジニアです。2021年よりエンジニアに転向し、スタートアップ企業ではチームリーダーとしてバックエンドを中心にフロントエンド・インフラを含む幅広い開発を経験。その後、経理経験（日商簿記1級）を活かして、株式会社クラウドワークスにて経理業務改善を目的としたチームのエンジニアとして開発に従事しました。
+    </p>
+    <a href="#contact" class="mt-8 inline-block bg-indigo-500 hover:bg-indigo-400 transition-colors text-white font-semibold px-8 py-3 rounded-full">
+      お問い合わせ
+    </a>
+  </div>
+</section>
+
+<section id="skills" class="bg-white py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-12">Skills</h2>
+    <div class="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Ruby</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Ruby on Rails</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">JavaScript</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">TypeScript</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">React</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Next.js</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">jQuery</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">AWS</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Docker</span>
+      <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">MySQL</span>
+    </div>
+  </div>
+</section>
+
+<section id="blog" class="bg-slate-50 py-20">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-slate-800 mb-4">Blog</h2>
+    <p class="text-slate-500">Coming Soon</p>
+  </div>
+</section>
+
+<section id="contact" class="bg-white py-20">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-2xl font-bold text-slate-800 mb-4">Contact</h2>
+    <p class="text-slate-500 mb-8">お仕事のご依頼・ご相談はお気軽にどうぞ。</p>
+    <a href="mailto:shiida.tetsuro@gmail.com"
+       class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 transition-colors text-white font-semibold px-8 py-3 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+      </svg>
+      shiida.tetsuro@gmail.com
+    </a>
+  </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-500 text-sm text-center py-6">
+  &copy; <%= Date.current.year %> Shiida Tetsuro. All rights reserved.
+</footer>

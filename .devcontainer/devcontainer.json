@@ -9,7 +9,8 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/rails/.claude"
+    "CLAUDE_CONFIG_DIR": "/home/rails/.claude",
+    "RAILS_ENV": "development"
   },
   "mounts": [
     "source=claude-code-config,target=/home/rails/.claude,type=volume",
