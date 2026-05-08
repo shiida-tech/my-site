@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Shiida Tetsuro">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta property="og:title" content="<%= content_for?(:title) ? content_for(:title) : 'Shiida Tetsuro' %>">
+    <meta property="og:title" content="<%= content_for(:title) || 'Shiida Tetsuro' %>">
     <meta property="og:description" content="福岡在住のエンジニアです。Ruby on Rails を中心に Web 開発を行っています。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.url %>">
