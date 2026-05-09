@@ -11,6 +11,7 @@
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/rails/.claude",
     "RAILS_ENV": "development",
+    // Dockerfile の BUNDLE_DEPLOYMENT=1 を上書きして bundle install を可能にする
     "BUNDLE_DEPLOYMENT": "0"
   },
   "mounts": [
