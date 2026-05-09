@@ -10,7 +10,8 @@
   },
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/rails/.claude",
-    "RAILS_ENV": "development"
+    "RAILS_ENV": "development",
+    "BUNDLE_DEPLOYMENT": "0"
   },
   "mounts": [
     "source=claude-code-config,target=/home/rails/.claude,type=volume",
