@@ -1,11 +1,12 @@
 RSpec.describe "ログイン〜ダッシュボード", type: :system do
-  let!(:user) { User.create!(email_address: "admin@example.com", password: "password", admin: true) }
+  let(:password) { "password" }
+  let!(:user) { User.create!(email_address: "admin@example.com", password: password, admin: true) }
 
   it "ログインしてダッシュボードが表示される" do
     visit new_session_path
 
     fill_in "メールアドレス", with: user.email_address
-    fill_in "パスワード", with: "password"
+    fill_in "パスワード", with: password
     click_button "ログイン"
 
     expect(page).to have_current_path(admin_root_path)
@@ -27,7 +28,7 @@ RSpec.describe "ログイン〜ダッシュボード", type: :system do
   it "ログアウトするとトップページへ戻る" do
     visit new_session_path
     fill_in "メールアドレス", with: user.email_address
-    fill_in "パスワード", with: "password"
+    fill_in "パスワード", with: password
     click_button "ログイン"
 
     click_button "ログアウト"
