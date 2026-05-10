@@ -1,0 +1,8 @@
+<p>
+  以下のリンクからパスワードをリセットできます。<br>
+  <%= link_to "パスワードリセットページ", edit_password_url(@user.password_reset_token) %>
+</p>
+
+<p>
+  このリンクの有効期限は <%= distance_of_time_in_words(0, @user.password_reset_token_expires_in) %> です。
+</p>
