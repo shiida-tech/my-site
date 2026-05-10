@@ -1,0 +1,41 @@
+<div class="min-h-screen bg-slate-900 flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-white">管理者ログイン</h1>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl shadow-2xl p-8">
+      <% if flash[:alert] %>
+        <div class="mb-6 p-3 bg-red-900/50 border border-red-700 text-red-300 text-sm rounded-lg">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <%= form_with url: session_url do |form| %>
+        <div class="mb-5">
+          <%= form.label :email_address, "メールアドレス", class: "block text-sm font-medium text-slate-300 mb-2" %>
+          <%= form.email_field :email_address,
+                required: true,
+                autofocus: true,
+                autocomplete: "username",
+                placeholder: "admin@example.com",
+                value: params[:email_address],
+                class: "w-full bg-slate-700 border border-slate-600 text-white placeholder-slate-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" %>
+        </div>
+
+        <div class="mb-6">
+          <%= form.label :password, "パスワード", class: "block text-sm font-medium text-slate-300 mb-2" %>
+          <%= form.password_field :password,
+                required: true,
+                autocomplete: "current-password",
+                placeholder: "••••••••",
+                maxlength: 72,
+                class: "w-full bg-slate-700 border border-slate-600 text-white placeholder-slate-500 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" %>
+        </div>
+
+        <%= form.submit "ログイン",
+              class: "w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-lg transition-colors cursor-pointer" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Admin | Shiida Tetsuro" %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="bg-slate-100 min-h-screen">
+    <nav class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center shadow">
+      <span class="font-bold text-lg tracking-wide">管理画面</span>
+      <div class="flex items-center gap-4">
+        <span class="text-slate-300 text-sm"><%= Current.user.email_address %></span>
+        <%= button_to "ログアウト", session_path, method: :delete,
+              class: "text-sm bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded transition-colors cursor-pointer" %>
+      </div>
+    </nav>
+    <main class="container mx-auto px-6 py-8 max-w-5xl">
+      <% if flash[:notice] %>
+        <div class="mb-4 p-4 bg-green-100 text-green-800 rounded"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="mb-4 p-4 bg-red-100 text-red-800 rounded"><%= flash[:alert] %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
