@@ -1,5 +1,5 @@
 class Admin::BlogPostsController < Admin::BaseController
-  before_action :set_blog_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish, :preview]
+  before_action :set_blog_post, only: [ :show, :edit, :update, :destroy, :publish, :unpublish, :preview ]
 
   def index
     @pagy, @blog_posts = pagy(:offset, BlogPost.includes(:category, :user).order(id: :desc), limit: 20)

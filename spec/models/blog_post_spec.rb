@@ -79,7 +79,7 @@ RSpec.describe BlogPost, type: :model do
 
     it "published_order は published のみ published_at 降順で返す" do
       titles = BlogPost.published_order.map(&:title)
-      expect(titles).to eq(["New post", "Old post"])
+      expect(titles).to eq([ "New post", "Old post" ])
     end
 
     it "draft は published_order に含まれない" do

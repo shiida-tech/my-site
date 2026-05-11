@@ -106,7 +106,7 @@ RSpec.describe "管理画面 ブログ記事", type: :system do
 
     it "カテゴリー選択ドロップダウンが表示される" do
       visit new_admin_blog_post_path
-      expect(page).to have_select("カテゴリー", with_options: ["Ruby"])
+      expect(page).to have_select("カテゴリー", with_options: [ "Ruby" ])
     end
 
     it "カテゴリーを選択して保存できる" do

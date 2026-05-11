@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   root "home#index"
 
-  resources :blog_posts, only: [:index, :show], path: "blog"
+  resources :blog_posts, only: [ :index, :show ], path: "blog"
 
   namespace :admin do
     root "dashboard#index"
-    resources :categories, except: [:show]
+    resources :categories, except: [ :show ]
     resources :blog_posts do
       member do
         post :publish
