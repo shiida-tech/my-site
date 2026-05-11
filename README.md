@@ -33,3 +33,7 @@ bundle exec rspec
 ## 管理画面
 
 `http://localhost:3000/admin` からアクセス。ログインには `db:seed` で作成した管理ユーザーを使用。
+
+## デプロイ
+
+[Kamal](https://kamal-deploy.org/) を使用。
