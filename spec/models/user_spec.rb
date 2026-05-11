@@ -47,5 +47,16 @@ RSpec.describe User, type: :model do
       user.sessions.create!(user_agent: "test", ip_address: "127.0.0.1")
       expect { user.destroy }.to change(Session, :count).by(-1)
     end
+
+    it "記事があるユーザーは削除できない" do
+      user = User.create!(email_address: "test@example.com", password: "password")
+      BlogPost.create!(title: "テスト記事", slug: "test", user: user)
+      expect { user.destroy }.to raise_error(ActiveRecord::DeleteRestrictionError)
+    end
+
+    it "記事がないユーザーは削除できる" do
+      user = User.create!(email_address: "test@example.com", password: "password")
+      expect { user.destroy }.to change(User, :count).by(-1)
+    end
   end
 end

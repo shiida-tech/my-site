@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="icon" href="<%= asset_path 'profile-illustration.png' %>" type="image/png">
+    <link rel="apple-touch-icon" href="<%= asset_path 'profile-illustration.png' %>">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="bg-slate-100 min-h-screen">
     <nav class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center shadow">
-      <span class="font-bold text-lg tracking-wide">管理画面</span>
+      <%= link_to "管理画面", admin_root_path, class: "font-bold text-lg tracking-wide hover:text-slate-300 transition-colors" %>
       <div class="flex items-center gap-4">
         <span class="text-slate-300 text-sm"><%= Current.user.email_address %></span>
         <%= button_to "ログアウト", session_path, method: :delete,

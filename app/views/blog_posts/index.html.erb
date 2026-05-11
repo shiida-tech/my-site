@@ -1,0 +1,38 @@
+<% content_for :title, "Blog | Shiida Tetsuro" %>
+
+<div class="bg-slate-50 min-h-screen">
+  <div class="container mx-auto px-6 py-12 max-w-4xl">
+    <div class="mb-4">
+      <%= link_to "← Shiida Tetsuro", root_path, class: "text-slate-400 hover:text-slate-600 text-sm" %>
+    </div>
+    <h1 class="text-3xl font-bold text-slate-800 mb-10">Blog</h1>
+
+    <% if @blog_posts.empty? %>
+      <p class="text-slate-400 text-center py-20">まだ記事がありません。</p>
+    <% else %>
+      <div class="space-y-6">
+        <% @blog_posts.each do |post| %>
+          <article class="bg-white rounded-xl shadow hover:shadow-md transition-shadow p-6">
+            <% if post.category %>
+              <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                <%= post.category.name %>
+              </span>
+            <% end %>
+            <h2 class="text-xl font-bold text-slate-800 mt-3 mb-2">
+              <%= link_to post.title, blog_post_path(post.slug), class: "hover:text-indigo-600 transition-colors" %>
+            </h2>
+            <% if post.published_at %>
+              <time class="text-slate-400 text-sm" datetime="<%= post.published_at.iso8601 %>">
+                <%= post.published_at.strftime("%Y年%m月%d日") %>
+              </time>
+            <% end %>
+            <p class="text-slate-500 text-sm mt-3 leading-relaxed">
+              <%= truncate(post.content.to_plain_text, length: 120) %>
+            </p>
+          </article>
+        <% end %>
+      </div>
+      <div class="flex justify-center mt-8"><%== @pagy.series_nav %></div>
+    <% end %>
+  </div>
+</div>
