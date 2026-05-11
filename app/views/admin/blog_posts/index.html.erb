@@ -7,47 +7,49 @@
 </div>
 
 <div class="bg-white rounded-xl shadow overflow-hidden">
-  <table class="w-full text-sm">
-    <thead class="bg-slate-50 border-b border-slate-200">
-      <tr>
-        <th class="px-4 py-3 text-left text-slate-600 font-medium">タイトル</th>
-        <th class="px-4 py-3 text-left text-slate-600 font-medium">カテゴリー</th>
-        <th class="px-4 py-3 text-left text-slate-600 font-medium">ステータス</th>
-        <th class="px-4 py-3 text-left text-slate-600 font-medium">公開日時</th>
-        <th class="px-4 py-3 text-left text-slate-600 font-medium">操作</th>
-      </tr>
-    </thead>
-    <tbody class="divide-y divide-slate-100">
-      <% @blog_posts.each do |post| %>
-        <tr class="hover:bg-slate-50">
-          <td class="px-4 py-3 font-medium text-slate-800"><%= post.title %></td>
-          <td class="px-4 py-3 text-slate-500"><%= post.category&.name || "-" %></td>
-          <td class="px-4 py-3">
-            <% if post.published? %>
-              <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">公開中</span>
-            <% else %>
-              <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs font-medium">下書き</span>
-            <% end %>
-          </td>
-          <td class="px-4 py-3 text-slate-500 text-xs">
-            <%= post.published_at&.strftime("%Y/%m/%d %H:%M") || "-" %>
-          </td>
-          <td class="px-4 py-3">
-            <div class="flex gap-3">
-              <%= link_to "詳細", admin_blog_post_path(post),
-                    class: "text-slate-600 hover:text-slate-500 font-medium" %>
-              <%= link_to "編集", edit_admin_blog_post_path(post),
-                    class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-      <% if @blog_posts.empty? %>
+  <div class="overflow-x-auto">
+    <table class="w-full min-w-max text-sm">
+      <thead class="bg-slate-50 border-b border-slate-200">
         <tr>
-          <td colspan="5" class="px-4 py-8 text-center text-slate-400">記事がまだありません。</td>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">タイトル</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">カテゴリー</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">ステータス</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">公開日時</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">操作</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @blog_posts.each do |post| %>
+          <tr class="hover:bg-slate-50">
+            <td class="px-4 py-3 font-medium text-slate-800"><%= post.title %></td>
+            <td class="px-4 py-3 text-slate-500"><%= post.category&.name || "-" %></td>
+            <td class="px-4 py-3">
+              <% if post.published? %>
+                <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">公開中</span>
+              <% else %>
+                <span class="px-2 py-1 bg-slate-100 text-slate-600 rounded text-xs font-medium">下書き</span>
+              <% end %>
+            </td>
+            <td class="px-4 py-3 text-slate-500 text-xs">
+              <%= post.published_at&.strftime("%Y/%m/%d %H:%M") || "-" %>
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex gap-3">
+                <%= link_to "詳細", admin_blog_post_path(post),
+                      class: "text-slate-600 hover:text-slate-500 font-medium" %>
+                <%= link_to "編集", edit_admin_blog_post_path(post),
+                      class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        <% if @blog_posts.empty? %>
+          <tr>
+            <td colspan="5" class="px-4 py-8 text-center text-slate-400">記事がまだありません。</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div class="flex justify-center mt-4"><%== @pagy.series_nav %></div>
