@@ -33,9 +33,43 @@
 </section>
 
 <section id="blog" class="bg-slate-50 py-20">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-2xl font-bold text-slate-800 mb-4">Blog</h2>
-    <p class="text-slate-500">Coming Soon</p>
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-10">Blog</h2>
+    <% recent_posts = BlogPost.latest %>
+    <% if recent_posts.any? %>
+      <div class="max-w-2xl mx-auto space-y-4">
+        <% recent_posts.each do |post| %>
+          <article class="bg-white rounded-xl shadow hover:shadow-md transition-shadow p-6">
+            <div class="flex items-center justify-between mb-2">
+              <% if post.category %>
+                <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+                  <%= post.category.name %>
+                </span>
+              <% else %>
+                <span></span>
+              <% end %>
+              <% if post.published_at %>
+                <time class="text-slate-400 text-xs">
+                  <%= post.published_at.strftime("%Y年%m月%d日") %>
+                </time>
+              <% end %>
+            </div>
+            <h3 class="font-bold text-slate-800 text-lg mb-2">
+              <%= link_to post.title, blog_post_path(post.slug), class: "hover:text-indigo-600 transition-colors" %>
+            </h3>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              <%= truncate(post.content.to_plain_text, length: 100) %>
+            </p>
+          </article>
+        <% end %>
+        <div class="text-center mt-6">
+          <%= link_to "記事をもっと見る →", blog_posts_path,
+                class: "text-indigo-600 hover:text-indigo-500 font-medium text-sm" %>
+        </div>
+      </div>
+    <% else %>
+      <p class="text-slate-500 text-center">Coming Soon</p>
+    <% end %>
   </div>
 </section>
 
