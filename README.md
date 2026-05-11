@@ -1,24 +1,39 @@
-# README
+# my-site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails で構築した個人ポートフォリオサイト。ブログ機能付き。
 
-Things you may want to cover:
+## 技術スタック
 
-* Ruby version
+- Ruby 4.0 / Rails 8.1
+- SQLite
+- Tailwind CSS v4
+- Hotwire（Turbo / Stimulus）
+- Action Text（Trix エディタ）
+- RSpec / Capybara
 
-* System dependencies
+## 開発環境のセットアップ
 
-* Configuration
+devcontainer を使用。VS Code で `.devcontainer` を開くと自動でセットアップされる。
 
-* Database creation
+```bash
+# DB セットアップ
+bin/rails db:migrate
+bin/rails db:seed   # 管理ユーザー作成
 
-* Database initialization
+# 開発サーバー起動
+bin/dev
+```
 
-* How to run the test suite
+## テスト
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle exec rspec
+```
 
-* Deployment instructions
+## 管理画面
 
-* ...
+`http://localhost:3000/admin` からアクセス。ログインには `db:seed` で作成した管理ユーザーを使用。
+
+## デプロイ
+
+[Kamal](https://kamal-deploy.org/) を使用。
