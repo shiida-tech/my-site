@@ -57,7 +57,7 @@ bin/rails db:seed                         # 管理ユーザー作成（admin@exa
 ### CSS の注意点
 
 - `app/assets/tailwind/application.css` に `@import "../stylesheets/actiontext.css"` と `@import "./pagy-tailwind.css"` を含む
-- `pagy-tailwind.css` は `@apply` を使うため Tailwind のビルドが必須。gem から手動コピーして管理（`/usr/local/bundle/ruby/4.0.0/gems/pagy-43.5.3/stylesheets/pagy-tailwind.css`）
+- `pagy-tailwind.css` は `@apply` を使うため Tailwind のビルドが必須。gem から手動コピーして管理。更新時は `find $(bundle show pagy) -name "pagy-tailwind.css"` でパスを確認してコピーする
 - `config/initializers/pagy.rb` に `require "pagy"` が必要（Docker 環境で自動 require されないため）
 
 ## テストの規約
