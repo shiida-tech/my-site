@@ -1,0 +1,11 @@
+~/.ssh
+.env
+.env.*
+*.pem
+*.key
+config/master.key
+config/credentials/*.key
+config/credentials.yml.enc
+storage/
+log/
+tmp/
