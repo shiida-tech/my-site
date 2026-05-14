@@ -2,7 +2,7 @@
 service: my-site
 
 # Name of the container image (use your-user/app-name on external registries).
-image: ghcr.io/shiida-tech/my-site
+image: shiida-tech/my-site
 
 # Deploy to these servers.
 servers:
