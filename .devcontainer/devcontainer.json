@@ -23,6 +23,9 @@
     "source=gh-config,target=/home/rails/.config/gh,type=volume",
     "source=ssh-config,target=/home/rails/.ssh,type=volume"
   ],
+  // macOS Docker Desktop では /var/run/docker-host.sock が root:root 所有のため、
+  // rails ユーザーがアクセスするには root グループへの追加が必要。
+  // docker-init.sh による socat relay は sudo が必要なため利用不可。
   "runArgs": ["--group-add=root"],
   "remoteUser": "rails",
   "initializeCommand": "docker run --rm -v claude-code-config:/home/rails/.claude -v gh-config:/home/rails/.config/gh -v ssh-config:/home/rails/.ssh alpine chown -R 1000:1000 /home/rails/.claude /home/rails/.config/gh /home/rails/.ssh"
