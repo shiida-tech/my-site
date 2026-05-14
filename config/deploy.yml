@@ -7,7 +7,7 @@ image: shiida-tech/my-site
 # Deploy to these servers.
 servers:
   web:
-    - 54.95.2.251
+    - 54.95.2.251 # Elastic IP（固定）
   # job:
   #   hosts:
   #     - 192.168.0.1
