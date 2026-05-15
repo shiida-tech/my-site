@@ -9,7 +9,11 @@ Ruby on Rails で構築した個人ポートフォリオサイト。ブログ機
 - Tailwind CSS v4
 - Hotwire（Turbo / Stimulus）
 - Action Text（Trix エディタ）
+- Active Storage + AWS S3
 - RSpec / Capybara
+- Kamal（デプロイ）
+- Docker / GitHub Container Registry
+- AWS EC2 / S3 / Route53
 
 ## 開発環境のセットアップ
 
@@ -36,4 +40,9 @@ bundle exec rspec
 
 ## デプロイ
 
-[Kamal](https://kamal-deploy.org/) を使用。
+[Kamal](https://kamal-deploy.org/) を使用して AWS EC2 にデプロイ。
+
+```bash
+bin/kamal setup   # 初回のみ
+bin/kamal deploy  # デプロイ
+```
