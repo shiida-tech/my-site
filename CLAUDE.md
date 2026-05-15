@@ -24,6 +24,15 @@ bundle exec rubocop -a                    # 自動修正
 # DB
 bin/rails db:migrate
 bin/rails db:seed                         # 管理ユーザー作成（admin@example.com / password1234）
+
+# デプロイ（Kamal）
+bin/kamal setup   # 初回のみ。EC2 に Docker・Traefik をセットアップ
+bin/kamal deploy  # ビルド・デプロイ
+bin/kamal lock release  # デプロイが中断してロックが残った場合に解除
+
+# 本番環境の操作
+bin/kamal app exec --interactive --reuse "bin/rails console"  # Rails コンソール
+bin/kamal logs -f  # ログ確認
 ```
 
 ## アーキテクチャ
@@ -47,6 +56,18 @@ bin/rails db:seed                         # 管理ユーザー作成（admin@exa
 - `BlogPost` — `has_rich_text :content`（Action Text）。`status` は integer enum（draft: 0, published: 1）。公開時は `content` 必須バリデーション。slug は `SecureRandom.hex(4)` で自動生成。
 - `Category` — `has_many :blog_posts, dependent: :nullify`。
 - `User` — `has_secure_password`。`admin` boolean で管理者判定。`has_many :blog_posts, dependent: :restrict_with_exception`。
+
+### Active Storage
+
+- development / test: ローカルディスク（`storage/` ディレクトリ）
+- production: AWS S3（`config/storage.yml` の `amazon` 設定）
+- S3 への画像アップロードはブラウザから直接行うため、S3 バケットに CORS 設定が必要
+
+### 秘匿情報の管理
+
+- 秘匿情報（AWS キー・GitHub トークン等）は `credentials.yml.enc` に保存（`VISUAL="code --wait" bin/rails credentials:edit` で編集）
+- `.kamal/secrets` は `bin/rails credentials:fetch` 経由で読み込む設計。raw 値を直接書かない
+- `config/master.key` は `.gitignore` 済み。git に含めない
 
 ### フロントエンド
 
