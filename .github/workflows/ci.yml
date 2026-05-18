@@ -113,9 +113,3 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bin/kamal deploy
 
-      - name: Show container logs on failure
-        if: failure()
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: bin/kamal app logs --lines 50
-
