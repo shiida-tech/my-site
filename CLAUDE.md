@@ -23,7 +23,7 @@ bundle exec rubocop -a                    # 自動修正
 
 # DB
 bin/rails db:migrate
-bin/rails db:seed                         # 管理ユーザー作成（admin@example.com / password1234）
+bin/rails db:seed                         # 管理ユーザー作成（development のみ。admin@example.com / password1234）
 
 # デプロイ（Kamal）
 bin/kamal setup   # 初回のみ。EC2 に Docker・Traefik をセットアップ
