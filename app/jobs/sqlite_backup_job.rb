@@ -4,6 +4,11 @@ require "zlib"
 class SqliteBackupJob < ApplicationJob
   queue_as :default
 
+  rescue_from(StandardError) do |e|
+    NotificationMailer.sqlite_backup_failure(e).deliver_now
+    raise e
+  end
+
   def perform
     date       = Time.current.strftime("%Y%m%d")
     backup_tmp = Rails.root.join("tmp/production_#{date}.sqlite3").to_s
