@@ -106,7 +106,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Add EC2 host to known_hosts
-        run: ssh-keyscan -H 54.95.2.251 >> ~/.ssh/known_hosts
+        run: ssh-keyscan 54.95.2.251 >> ~/.ssh/known_hosts
 
       - name: Deploy with Kamal
         env:
