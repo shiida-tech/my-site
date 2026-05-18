@@ -25,12 +25,10 @@ class SqliteBackupJob < ApplicationJob
   private
 
   def sqlite_backup(source, destination)
-    src = SQLite3::Database.new(source)
-    dst = SQLite3::Database.new(destination)
-    src.backup(dst) # SQLite Online Backup API — 書き込み中でも安全
+    db = SQLite3::Database.new(source)
+    db.execute("VACUUM INTO '#{destination}'") # 書き込み中でも安全なオンラインバックアップ
   ensure
-    src&.close
-    dst&.close
+    db&.close
   end
 
   def gzip(input_path, output_path)
