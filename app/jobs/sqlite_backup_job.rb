@@ -33,19 +33,23 @@ class SqliteBackupJob < ApplicationJob
   end
 
   def s3_upload(file_path, key)
-    File.open(file_path, "rb") { |f| s3.put_object(bucket: ENV["AWS_BUCKET"], key: key, body: f) }
+    File.open(file_path, "rb") { |f| s3.put_object(bucket: aws_bucket, key: key, body: f) }
     Rails.logger.info("[SqliteBackupJob] uploaded: #{key}")
   end
 
   def s3_prune
     cutoff = 30.days.ago.strftime("%Y%m%d")
-    s3.list_objects_v2(bucket: ENV["AWS_BUCKET"], prefix: "backups/sqlite/").contents.each do |obj|
+    s3.list_objects_v2(bucket: aws_bucket, prefix: "backups/sqlite/").contents.each do |obj|
       date = obj.key[/\d{8}/]
-      s3.delete_object(bucket: ENV["AWS_BUCKET"], key: obj.key) if date && date < cutoff
+      s3.delete_object(bucket: aws_bucket, key: obj.key) if date && date < cutoff
     end
   end
 
   def s3
-    @s3 ||= Aws::S3::Client.new(region: ENV["AWS_REGION"])
+    @s3 ||= Aws::S3::Client.new(region: ENV.fetch("AWS_REGION"))
+  end
+
+  def aws_bucket
+    @aws_bucket ||= ENV.fetch("AWS_BUCKET")
   end
 end
