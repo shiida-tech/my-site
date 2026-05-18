@@ -75,6 +75,9 @@ volumes:
 # version inside the asset_path.
 asset_path: /rails/public/assets
 
+# How long to wait for new containers to boot (default: 30s).
+deploy_timeout: 60
+
 # Configure the image builder.
 builder:
   arch: amd64
