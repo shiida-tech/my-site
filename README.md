@@ -9,7 +9,8 @@ Ruby on Rails で構築した個人ポートフォリオサイト。ブログ機
 - Tailwind CSS v4
 - Hotwire（Turbo / Stimulus）
 - Action Text（Trix エディタ）
-- Active Storage + AWS S3
+- Active Storage + AWS S3（画像ストレージ・SQLite バックアップ）
+- Solid Queue（バックグラウンドジョブ）
 - RSpec / Capybara
 - Kamal（デプロイ）
 - Docker / GitHub Container Registry
