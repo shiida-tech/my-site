@@ -12,7 +12,7 @@ class SqliteBackupJob < ApplicationJob
     sqlite_backup(Rails.root.join("storage/production.sqlite3").to_s, backup_tmp)
     gzip(backup_tmp, gz_tmp)
     s3_upload(gz_tmp, "backups/sqlite/production_#{date}.sqlite3.gz")
-    s3_prune
+    s3_prune rescue Rails.logger.error("[SqliteBackupJob] prune failed: #{$!}")
   ensure
     FileUtils.rm_f([ backup_tmp, gz_tmp ])
   end
