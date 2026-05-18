@@ -26,8 +26,10 @@ bin/rails db:migrate
 bin/rails db:seed                         # 管理ユーザー作成（development のみ。admin@example.com / password1234）
 
 # デプロイ（Kamal）
+# main へのマージ時、CI（スキャン・Lint・テスト）通過後に自動で bin/kamal deploy が走る
+# GitHub Secrets に SSH_PRIVATE_KEY と RAILS_MASTER_KEY の登録が必要
 bin/kamal setup   # 初回のみ。EC2 に Docker・Traefik をセットアップ
-bin/kamal deploy  # ビルド・デプロイ
+bin/kamal deploy  # 手動デプロイ
 bin/kamal lock release  # デプロイが中断してロックが残った場合に解除
 
 # 本番環境の操作（kamal aliases で短縮可能）

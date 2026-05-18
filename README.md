@@ -1,6 +1,6 @@
 # my-site
 
-Ruby on Rails で構築した個人ポートフォリオサイト。ブログ機能付き。
+Ruby on Rails で構築した個人プロフィールサイト。ブログ機能付き。
 
 ## 技術スタック
 
@@ -18,7 +18,7 @@ Ruby on Rails で構築した個人ポートフォリオサイト。ブログ機
 
 ## 開発環境のセットアップ
 
-devcontainer を使用。VS Code で `.devcontainer` を開くと自動でセットアップされる。
+devcontainer を使用（VS Code の Dev Containers 拡張機能が必要）。
 
 ```bash
 # DB セットアップ
@@ -42,8 +42,9 @@ bundle exec rspec
 ## デプロイ
 
 [Kamal](https://kamal-deploy.org/) を使用して AWS EC2 にデプロイ。
+main ブランチへのマージ時に GitHub Actions で自動デプロイされる。
 
 ```bash
 bin/kamal setup   # 初回のみ
-bin/kamal deploy  # デプロイ
+bin/kamal deploy  # 手動デプロイ
 ```
