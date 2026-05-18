@@ -18,7 +18,7 @@ Ruby on Rails で構築した個人プロフィールサイト。ブログ機能
 
 ## 開発環境のセットアップ
 
-devcontainer を使用。VS Code の Dev Containers 拡張機能を使用。
+devcontainer を使用（VS Code の Dev Containers 拡張機能が必要）。
 
 ```bash
 # DB セットアップ
