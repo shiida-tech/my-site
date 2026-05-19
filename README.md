@@ -29,6 +29,12 @@ bin/rails db:seed   # 管理ユーザー作成
 bin/dev
 ```
 
+## Rails コンソール
+
+```bash
+bin/rails console
+```
+
 ## テスト
 
 ```bash
