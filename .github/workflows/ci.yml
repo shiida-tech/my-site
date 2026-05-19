@@ -108,8 +108,9 @@ jobs:
       - name: Add EC2 host to known_hosts
         run: ssh-keyscan 54.95.2.251 >> ~/.ssh/known_hosts
 
+      - name: Write master.key
+        run: echo -n "${{ secrets.RAILS_MASTER_KEY }}" > config/master.key
+
       - name: Deploy with Kamal
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bin/kamal deploy
 
