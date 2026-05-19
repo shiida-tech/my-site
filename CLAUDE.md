@@ -73,7 +73,7 @@ bin/kamal dbc      # DB コンソール
 - 秘匿情報（AWS キー・GitHub トークン等）は `credentials.yml.enc` に保存（`VISUAL="code --wait" bin/rails credentials:edit` で編集）
 - `.kamal/secrets` は `bin/rails credentials:fetch` 経由で読み込む設計。raw 値を直接書かない
 - `config/master.key` は `.gitignore` 済み。git に含めない
-- `credentials[:http_basic_auth]`（`name` / `password`）— 本番環境のログイン画面に HTTP Basic Auth をかける。未設定だとログインページにアクセス不可になるため必須
+- `credentials[:http_basic_auth]`（`name` / `password`）— 本番環境のログイン画面に HTTP Basic Auth をかける。未設定だと Basic Auth が常に拒否されログインページにアクセス不可になるため必須
 
 ### フロントエンド
 
