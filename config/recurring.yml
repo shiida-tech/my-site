@@ -16,4 +16,4 @@ production:
 
   sqlite_backup:
     class: SqliteBackupJob
-    schedule: 0 18 * * *   # 毎日 18:00 UTC = 翌 3:00 JST
+    schedule: 0 3 * * *   # 毎日 3:00 JST（cron はアプリタイムゾーン = 東京で評価される）
