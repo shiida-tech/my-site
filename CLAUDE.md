@@ -49,7 +49,7 @@ bin/kamal dbc      # DB コンソール
 
 ### ルーティング構造
 
-- `/` — ポートフォリオトップ（HomeController）
+- `/` — サイトトップ（HomeController）
 - `/blog` — 公開ブログ一覧・詳細（BlogPostsController）
 - `/admin` — 管理画面（admin namespace、要認証）
   - `/admin/blog_posts` — 記事管理（CRUD + publish/unpublish/preview）
@@ -73,6 +73,7 @@ bin/kamal dbc      # DB コンソール
 - 秘匿情報（AWS キー・GitHub トークン等）は `credentials.yml.enc` に保存（`VISUAL="code --wait" bin/rails credentials:edit` で編集）
 - `.kamal/secrets` は `bin/rails credentials:fetch` 経由で読み込む設計。raw 値を直接書かない
 - `config/master.key` は `.gitignore` 済み。git に含めない
+- `credentials[:http_basic_auth]`（`name` / `password`）— 本番環境のログイン画面に HTTP Basic Auth をかける。未設定だとログインページにアクセス不可になるため必須
 
 ### フロントエンド
 
@@ -89,8 +90,9 @@ bin/kamal dbc      # DB コンソール
 ### バックグラウンドジョブ
 
 - Solid Queue を使用（Puma 内で動作、`SOLID_QUEUE_IN_PUMA: true`）
-- 定期実行は `config/recurring.yml` で管理（cron 式または自然言語スケジュール、UTC 基準）
-- `SqliteBackupJob` — 毎日 3:00 JST（18:00 UTC）に `production.sqlite3` を gzip 圧縮して S3 の `backups/sqlite/` へアップロード。30 日より古いファイルは自動削除。
+- 定期実行は `config/recurring.yml` で管理（cron 式または自然言語スケジュール）
+- **cron 式はアプリタイムゾーン（JST）で評価される**。`0 3 * * *` = 毎日 3:00 JST。UTC 基準のつもりで書くと6時間ずれるため注意
+- `SqliteBackupJob` — 毎日 3:00 JST に `production.sqlite3` を gzip 圧縮して S3 の `backups/sqlite/` へアップロード。同日に複数回実行すると同名ファイルで上書き。30 日より古いファイルは自動削除。
 - 手動実行: `bin/kamal app exec --interactive --reuse "bin/rails runner 'SqliteBackupJob.perform_now'"`
 
 ## テストの規約
