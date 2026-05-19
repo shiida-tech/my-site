@@ -114,3 +114,7 @@ jobs:
       - name: Deploy with Kamal
         run: bin/kamal deploy
 
+      - name: Remove master.key
+        if: always()
+        run: rm -f config/master.key
+
