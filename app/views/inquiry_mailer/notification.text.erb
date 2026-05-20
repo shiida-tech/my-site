@@ -1,0 +1,12 @@
+お問い合わせがありました。
+
+---
+
+氏名: <%= @inquiry.name %>
+会社名・屋号: <%= @inquiry.company_name.presence || "（未入力）" %>
+メールアドレス: <%= @inquiry.email %>
+受信日時: <%= @inquiry.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+
+---
+
+<%= @inquiry.body %>

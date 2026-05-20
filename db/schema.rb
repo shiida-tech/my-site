@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_10_081615) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_20_044055) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -70,6 +70,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_10_081615) do
     t.string "name", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.text "body", null: false
+    t.string "company_name"
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.string "name", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|

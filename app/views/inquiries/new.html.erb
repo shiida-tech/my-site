@@ -1,0 +1,71 @@
+<% content_for :title, "お問い合わせ | Shiida Tetsuro" %>
+
+<section class="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-16">
+  <div class="container mx-auto px-6 text-center">
+    <h1 class="text-3xl font-bold mb-2">Contact</h1>
+    <p class="text-slate-300">お仕事のご依頼・ご相談はお気軽にどうぞ。</p>
+  </div>
+</section>
+
+<section class="bg-slate-50 py-16">
+  <div class="container mx-auto px-6 max-w-xl">
+    <%= link_to "← トップへ戻る", root_path, class: "text-slate-400 hover:text-slate-600 text-sm block mb-4 transition-colors" %>
+    <div class="bg-white rounded-xl shadow p-8">
+      <%= form_with model: @inquiry, url: inquiries_path do |f| %>
+        <% if @inquiry.errors.any? %>
+          <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+            <ul class="list-disc list-inside space-y-1">
+              <% @inquiry.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%# ハニーポット：ボット対策。実際のユーザーには非表示 %>
+        <div class="hidden" aria-hidden="true">
+          <%= f.label :phone, "電話番号" %>
+          <%= f.text_field :phone, tabindex: -1, autocomplete: "off" %>
+        </div>
+
+        <div class="mb-5">
+          <%= f.label :name, "氏名", class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <span class="text-xs text-red-500 ml-1">必須</span>
+          <%= f.text_field :name,
+                class: "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                placeholder: "山田 太郎" %>
+        </div>
+
+        <div class="mb-5">
+          <%= f.label :company_name, "会社名・屋号", class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <span class="text-xs text-slate-400 ml-1">任意</span>
+          <%= f.text_field :company_name,
+                class: "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                placeholder: "株式会社〇〇" %>
+        </div>
+
+        <div class="mb-5">
+          <%= f.label :email, "メールアドレス", class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <span class="text-xs text-red-500 ml-1">必須</span>
+          <%= f.email_field :email,
+                class: "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                placeholder: "example@example.com" %>
+        </div>
+
+        <div class="mb-6">
+          <%= f.label :body, "お問い合わせ内容", class: "block text-sm font-medium text-slate-700 mb-1" %>
+          <span class="text-xs text-red-500 ml-1">必須</span>
+          <%= f.text_area :body,
+                rows: 6,
+                class: "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none",
+                placeholder: "お問い合わせ内容をご記入ください。" %>
+        </div>
+
+        <div class="border-t border-slate-200 pt-5 flex justify-end">
+          <%= f.submit "送信する",
+                class: "bg-slate-900 hover:bg-slate-700 transition-colors text-white font-semibold px-8 py-2.5 rounded-full text-sm cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
