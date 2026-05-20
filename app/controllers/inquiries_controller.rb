@@ -5,7 +5,7 @@ class InquiriesController < ApplicationController
 
   def create
     # ハニーポット：ボットは非表示フィールドにも入力するため、値があればスパムとして無視する
-    if params[:inquiry][:phone].present?
+    if params.dig(:inquiry, :phone).present?
       redirect_to root_path, notice: "送信しました。"
       return
     end
