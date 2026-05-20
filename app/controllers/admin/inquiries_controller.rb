@@ -7,7 +7,7 @@ class Admin::InquiriesController < Admin::BaseController
   end
 
   def show
-    @inquiry.update!(read: true)
+    @inquiry.update(read: true)
   end
 
   private
