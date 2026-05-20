@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_20_044055) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_20_142944) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_20_044055) do
     t.string "name", null: false
     t.boolean "read", default: false, null: false
     t.datetime "updated_at", null: false
+    t.index ["read"], name: "index_inquiries_on_read"
   end
 
   create_table "sessions", force: :cascade do |t|
