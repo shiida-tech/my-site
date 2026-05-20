@@ -9,6 +9,11 @@ ja:
       user:
         email_address: メールアドレス
         password: パスワード
+      inquiry:
+        name: 氏名
+        email: メールアドレス
+        company_name: 会社名・屋号
+        body: お問い合わせ内容
       category:
         name: カテゴリー名
       blog_post:

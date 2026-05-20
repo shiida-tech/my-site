@@ -1,0 +1,53 @@
+<% content_for :title, "お問い合わせ一覧 | Admin" %>
+
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-bold text-slate-800">
+    お問い合わせ
+    <% if @unread_count > 0 %>
+      <span class="ml-2 text-sm font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded-full">未読 <%= @unread_count %></span>
+    <% end %>
+  </h1>
+</div>
+
+<div class="bg-white rounded-xl shadow overflow-hidden">
+  <div class="overflow-x-auto">
+    <table class="w-full min-w-max text-sm">
+      <thead class="bg-slate-50 border-b border-slate-200">
+        <tr>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">氏名</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">会社名・屋号</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">メールアドレス</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">受信日時</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">状態</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">操作</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-100">
+        <% @inquiries.each do |inquiry| %>
+          <tr class="hover:bg-slate-50 <%= "font-semibold" unless inquiry.read %>">
+            <td class="px-4 py-3 text-slate-800"><%= inquiry.name %></td>
+            <td class="px-4 py-3 text-slate-500"><%= inquiry.company_name.presence || "-" %></td>
+            <td class="px-4 py-3 text-slate-500"><%= inquiry.email %></td>
+            <td class="px-4 py-3 text-slate-500 text-xs"><%= inquiry.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+            <td class="px-4 py-3">
+              <% if inquiry.read %>
+                <span class="px-2 py-1 bg-slate-100 text-slate-500 rounded text-xs font-medium">既読</span>
+              <% else %>
+                <span class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-medium">未読</span>
+              <% end %>
+            </td>
+            <td class="px-4 py-3">
+              <%= link_to "詳細", admin_inquiry_path(inquiry), class: "text-indigo-600 hover:text-indigo-500 font-medium" %>
+            </td>
+          </tr>
+        <% end %>
+        <% if @inquiries.empty? %>
+          <tr>
+            <td colspan="6" class="px-4 py-8 text-center text-slate-400">お問い合わせはまだありません。</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="flex justify-center mt-4"><%== @pagy.series_nav %></div>

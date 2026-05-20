@@ -30,8 +30,22 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div data-controller="flash" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90vw] sm:w-auto bg-green-100 text-green-800 text-sm font-medium px-6 py-3 rounded-lg shadow text-center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div data-controller="flash" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90vw] sm:w-auto bg-red-100 text-red-800 text-sm font-medium px-6 py-3 rounded-lg shadow text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <main>
       <%= yield %>
     </main>
+    <footer class="bg-slate-900 text-slate-500 text-sm text-center py-6 px-6">
+      &copy; <%= Date.current.year %> Shiida Tetsuro. All rights reserved. |
+      <%= link_to "プライバシーポリシー", privacy_policy_path, class: "hover:text-slate-300 transition-colors" %>
+    </footer>
   </body>
 </html>

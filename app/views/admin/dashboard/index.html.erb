@@ -28,4 +28,22 @@
       <p class="text-sm text-slate-400">カテゴリーの作成・編集・管理</p>
     </div>
   <% end %>
+
+  <%= link_to admin_inquiries_path,
+        class: "bg-white rounded-xl shadow hover:shadow-md transition-shadow p-6 flex items-center gap-4 group" do %>
+    <div class="bg-indigo-100 text-indigo-600 rounded-lg p-3">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    </div>
+    <div>
+      <p class="font-semibold text-slate-800 group-hover:text-indigo-600 transition-colors flex items-center gap-2">
+        お問い合わせ
+        <% if @unread_inquiry_count > 0 %>
+          <span class="text-xs font-medium bg-red-100 text-red-700 px-2 py-0.5 rounded-full"><%= @unread_inquiry_count %></span>
+        <% end %>
+      </p>
+      <p class="text-sm text-slate-400">お問い合わせの確認・管理</p>
+    </div>
+  <% end %>
 </div>

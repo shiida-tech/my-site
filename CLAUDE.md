@@ -49,11 +49,15 @@ bin/kamal dbc      # DB コンソール
 
 ### ルーティング構造
 
-- `/` — サイトトップ（HomeController）
+- `/` — サイトトップ（PagesController#index）
 - `/blog` — 公開ブログ一覧・詳細（BlogPostsController）
+- `/inquiries` — お問い合わせフォーム（InquiriesController、new/create のみ）
+- `/privacy-policy` — プライバシーポリシー（PagesController#privacy_policy）
 - `/admin` — 管理画面（admin namespace、要認証）
   - `/admin/blog_posts` — 記事管理（CRUD + publish/unpublish/preview）
   - `/admin/categories` — カテゴリー管理
+  - `/admin/inquiries` — お問い合わせ管理（index/show。詳細アクセスで既読化）
+- `/letter_opener` — 開発環境のみ。送信メールを確認できる UI
 
 ### モデル
 
@@ -61,6 +65,7 @@ bin/kamal dbc      # DB コンソール
 - `Category` — `has_many :blog_posts, dependent: :nullify`。
 - `User` — `has_secure_password`。`admin` boolean で管理者判定。`has_many :blog_posts, dependent: :restrict_with_exception`。
 - `Session` — ログイン時に生成されるセッションレコード。`Current.session` 経由でアクセス。
+- `Inquiry` — お問い合わせ。`name/email/company_name/body/read`。`read` は詳細ページアクセス時に `true` へ更新。
 
 ### Active Storage
 
@@ -74,6 +79,13 @@ bin/kamal dbc      # DB コンソール
 - `.kamal/secrets` は `bin/rails credentials:fetch` 経由で読み込む設計。raw 値を直接書かない
 - `config/master.key` は `.gitignore` 済み。git に含めない
 - `credentials[:http_basic_auth]`（`name` / `password`）— 本番環境のログイン画面に HTTP Basic Auth をかける。未設定だと Basic Auth が常に拒否されログインページにアクセス不可になるため必須
+
+### メーラー
+
+- `ApplicationMailer` — `from` は `credentials.dig(:smtp, :user_name)` から動的取得。
+- `InquiryMailer#notification` — お問い合わせ送信時に管理者へ通知。`deliver_later` で非同期送信。
+- `NotificationMailer#sqlite_backup_failure` — バックアップ失敗時の通知。
+- 開発環境は `letter_opener_web` でメール送信をキャプチャ（`/letter_opener` で確認）。本番は SMTP（Gmail）。
 
 ### フロントエンド
 

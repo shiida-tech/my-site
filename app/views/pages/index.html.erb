@@ -40,9 +40,7 @@
         X
       </a>
     </div>
-    <a href="#contact" class="mt-8 inline-block bg-indigo-500 hover:bg-indigo-400 transition-colors text-white font-semibold px-8 py-3 rounded-full">
-      お問い合わせ
-    </a>
+    <%= link_to "お問い合わせ", new_inquiry_path, class: "mt-8 inline-block bg-indigo-500 hover:bg-indigo-400 transition-colors text-white font-semibold px-8 py-3 rounded-full" %>
   </div>
 </section>
 
@@ -108,17 +106,13 @@
   <div class="container mx-auto px-6 text-center">
     <h2 class="text-2xl font-bold text-slate-800 mb-4">Contact</h2>
     <p class="text-slate-500 mb-8">お仕事のご依頼・ご相談はお気軽にどうぞ。</p>
-    <a href="mailto:shiida.tetsuro@gmail.com"
-       class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 transition-colors text-white font-semibold px-8 py-3 rounded-full">
+    <%= link_to new_inquiry_path,
+          class: "inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 transition-colors text-white font-semibold px-8 py-3 rounded-full" do %>
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
       </svg>
-      shiida.tetsuro@gmail.com
-    </a>
+      お問い合わせはこちら
+    <% end %>
   </div>
 </section>
-
-<footer class="bg-slate-900 text-slate-500 text-sm text-center py-6">
-  &copy; <%= Date.current.year %> Shiida Tetsuro. All rights reserved.
-</footer>
