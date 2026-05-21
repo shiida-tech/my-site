@@ -1,5 +1,4 @@
 RSpec.describe "パスワードリセット", type: :request do
-  before { skip "パスワードリセットのルーティングを無効化中" }
   let!(:user) { User.create!(email_address: "admin@test.com", password: "password", admin: true) }
 
   describe "GET /passwords/new" do
