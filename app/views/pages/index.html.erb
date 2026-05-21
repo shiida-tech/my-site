@@ -1,12 +1,12 @@
-<% content_for :title, "Shiida Tetsuro | Software Engineer" %>
+<% content_for :title, "Shiida Tetsuro | Web Engineer" %>
 
 <section class="bg-gradient-to-br from-slate-900 to-slate-700 text-white">
   <div class="container mx-auto px-6 py-24 flex flex-col items-center text-center">
     <%= image_tag "profile-photo.png", class: "w-28 h-28 rounded-full object-cover mb-6", alt: "Shiida Tetsuro" %>
     <h1 class="text-4xl font-bold tracking-tight mb-2">Shiida Tetsuro</h1>
-    <p class="text-slate-300 text-lg mb-6">Software Engineer</p>
+    <p class="text-slate-300 text-lg mb-6">Web Engineer</p>
     <p class="text-slate-400 max-w-xl leading-relaxed">
-      福岡在住のエンジニアです。2021年よりエンジニアに転向し、スタートアップ企業ではチームリーダーとしてバックエンドを中心にフロントエンド・インフラを含む幅広い開発を経験。その後、経理経験（日商簿記1級）を活かして、株式会社クラウドワークスにて経理業務改善を目的としたチームのエンジニアとして開発に従事しました。
+      福岡在住のエンジニアです。2021年にエンジニアに転向し、スタートアップと国内大手クラウドソーシングサービス運営企業での実務を経て、現在に至ります。
     </p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
       <a href="https://github.com/shiida-tech"
@@ -46,7 +46,7 @@
 
 <section id="skills" class="bg-white py-20">
   <div class="container mx-auto px-6">
-    <h2 class="text-2xl font-bold text-slate-800 text-center mb-12">Skills</h2>
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-12">スキル</h2>
     <div class="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
       <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Ruby</span>
       <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Ruby on Rails</span>
@@ -62,13 +62,59 @@
   </div>
 </section>
 
+<section id="strengths" class="bg-slate-50 py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-12">得意な領域</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-lg font-bold text-slate-800 mb-3">Railsバックエンド開発</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Ruby on Railsを用いたWebアプリケーション開発が得意です。チームリーダー経験があり、実装からデプロイまで一貫して対応できます。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-lg font-bold text-slate-800 mb-3">フルスタック対応</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">バックエンドが主軸ですが、フロントエンド（React/Next.js）やインフラ（AWS/Docker）など、幅広い領域で実務経験があります。</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-lg font-bold text-slate-800 mb-3">経理ドメイン知識</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">日商簿記1級保有・経理実務経験あり。経理・会計業務の深い知識をもとに、業務フローを理解した上での課題解決に貢献できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="bg-white py-20">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-12">制作実績</h2>
+    <div class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-lg font-bold text-slate-800 mb-2">プロフィールサイト（本サイト）</h3>
+        <p class="text-slate-500 text-sm leading-relaxed mb-4">Ruby on Railsで構築したポートフォリオサイト。ブログ機能・お問い合わせフォーム・管理画面を実装。AWS EC2にKamalでデプロイ。</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Ruby on Rails</span>
+          <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Tailwind CSS</span>
+          <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">SQLite</span>
+          <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">AWS EC2</span>
+          <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Kamal</span>
+        </div>
+        <a href="https://github.com/shiida-tech/my-site" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.588 2 12.253c0 4.527 2.865 8.369 6.839 9.725.5.094.683-.222.683-.494 0-.244-.009-.89-.014-1.747-2.782.62-3.369-1.375-3.369-1.375-.455-1.185-1.11-1.5-1.11-1.5-.908-.637.069-.624.069-.624 1.004.073 1.532 1.057 1.532 1.057.892 1.567 2.341 1.115 2.91.852.091-.663.349-1.115.635-1.371-2.221-.259-4.555-1.139-4.555-5.066 0-1.119.39-2.034 1.029-2.751-.103-.259-.446-1.303.098-2.714 0 0 .84-.276 2.75 1.051A9.388 9.388 0 0 1 12 6.949a9.39 9.39 0 0 1 2.504.347c1.909-1.327 2.747-1.051 2.747-1.051.546 1.411.203 2.455.1 2.714.64.717 1.028 1.632 1.028 2.751 0 3.937-2.337 4.804-4.566 5.058.359.317.679.944.679 1.902 0 1.372-.013 2.478-.013 2.814 0 .274.18.593.688.493C19.138 20.618 22 16.778 22 12.253 22 6.588 17.523 2 12 2Z" clip-rule="evenodd" />
+          </svg>
+          GitHubで見る
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="blog" class="bg-slate-50 py-20">
   <div class="container mx-auto px-6">
-    <h2 class="text-2xl font-bold text-slate-800 text-center mb-10">Blog</h2>
+    <h2 class="text-2xl font-bold text-slate-800 text-center mb-10">ブログ</h2>
     <% if @recent_posts.any? %>
       <div class="max-w-2xl mx-auto space-y-4">
         <% @recent_posts.each do |post| %>
-          <article class="bg-white rounded-xl shadow hover:shadow-md transition-shadow p-6">
+          <article class="bg-white rounded-xl shadow hover:shadow-md transition-shadow p-6 relative">
             <div class="flex items-center justify-between mb-2">
               <% if post.category %>
                 <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
@@ -84,7 +130,7 @@
               <% end %>
             </div>
             <h3 class="font-bold text-slate-800 text-lg mb-2">
-              <%= link_to post.title, blog_post_path(post.slug), class: "hover:text-indigo-600 transition-colors" %>
+              <%= link_to post.title, blog_post_path(post.slug), class: "hover:text-indigo-600 transition-colors after:absolute after:inset-0" %>
             </h3>
             <p class="text-slate-500 text-sm leading-relaxed">
               <%= truncate(post.content.to_plain_text, length: 100) %>
@@ -104,7 +150,7 @@
 
 <section id="contact" class="bg-white py-20">
   <div class="container mx-auto px-6 text-center">
-    <h2 class="text-2xl font-bold text-slate-800 mb-4">Contact</h2>
+    <h2 class="text-2xl font-bold text-slate-800 mb-4">お問い合わせ</h2>
     <p class="text-slate-500 mb-8">お仕事のご依頼・ご相談はお気軽にどうぞ。</p>
     <%= link_to new_inquiry_path,
           class: "inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-700 transition-colors text-white font-semibold px-8 py-3 rounded-full" do %>
