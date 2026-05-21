@@ -1,11 +1,16 @@
 <% content_for :title, "Blog | Shiida Tetsuro" %>
 
+<section class="bg-gradient-to-br from-slate-900 to-slate-700 text-white py-16">
+  <div class="container mx-auto px-6 text-center">
+    <h1 class="text-3xl font-bold">ブログ</h1>
+  </div>
+</section>
+
 <div class="bg-slate-50 min-h-screen">
   <div class="container mx-auto px-6 py-12 max-w-4xl">
-    <div class="mb-4">
-      <%= link_to "← トップへ戻る", root_path, class: "text-slate-400 hover:text-slate-600 text-sm" %>
+    <div class="mb-8">
+      <%= link_to "← トップへ戻る", root_path, class: "text-slate-400 hover:text-slate-600 text-sm transition-colors" %>
     </div>
-    <h1 class="text-3xl font-bold text-slate-800 mb-10">Blog</h1>
 
     <% if @blog_posts.empty? %>
       <p class="text-slate-400 text-center py-20">まだ記事がありません。</p>
