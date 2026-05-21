@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :session
-  resources :passwords, param: :token
+  resources :passwords, param: :token if Rails.env.development? || Rails.env.test?
   root "pages#index"
 
   resources :blog_posts, only: [ :index, :show ], path: "blog"
