@@ -33,6 +33,23 @@ RSpec.describe "Inquiries", type: :request do
       end
     end
 
+    context "Turnstile 認証に失敗した場合" do
+      before do
+        allow_any_instance_of(InquiriesController).to receive(:verify_turnstile).and_return(false)
+      end
+
+      it "お問い合わせを保存しない" do
+        expect {
+          post inquiries_path, params: valid_params
+        }.not_to change(Inquiry, :count)
+      end
+
+      it "422 を返す" do
+        post inquiries_path, params: valid_params
+        expect(response).to have_http_status(:unprocessable_content)
+      end
+    end
+
     context "ハニーポットが入力されている場合" do
       it "お問い合わせを保存せずにリダイレクトする" do
         expect {
