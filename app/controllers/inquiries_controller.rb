@@ -43,9 +43,7 @@ class InquiriesController < ApplicationController
       "response" => token,
       "remoteip" => request.remote_ip
     ))
-    result = JSON.parse(response.body)
-    Rails.logger.warn("Turnstile 検証失敗: #{result['error-codes']}") unless result["success"]
-    result["success"]
+    JSON.parse(response.body)["success"]
   rescue StandardError => e
     Rails.logger.error("Turnstile 検証エラー: #{e.class}: #{e.message}")
     true

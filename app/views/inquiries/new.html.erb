@@ -13,7 +13,7 @@
   <div class="container mx-auto px-6 max-w-xl">
     <%= link_to "← トップへ戻る", root_path, class: "text-slate-400 hover:text-slate-600 text-sm block mb-4 transition-colors" %>
     <div class="bg-white rounded-xl shadow p-8">
-      <%= form_with model: @inquiry, url: inquiries_path do |f| %>
+      <%= form_with model: @inquiry, url: inquiries_path, data: { turbo: false } do |f| %>
         <% if @inquiry.errors.any? %>
           <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
             <ul class="list-disc list-inside space-y-1">
