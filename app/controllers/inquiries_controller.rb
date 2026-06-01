@@ -34,11 +34,15 @@ class InquiriesController < ApplicationController
     return false if token.blank?
 
     uri = URI("https://challenges.cloudflare.com/turnstile/v0/siteverify")
-    response = Net::HTTP.post_form(uri, {
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.open_timeout = 3
+    http.read_timeout = 3
+    response = http.post(uri.path, URI.encode_www_form(
       "secret" => Rails.application.credentials.dig(:cloudflare, :turnstile_secret_key),
       "response" => token,
       "remoteip" => request.remote_ip
-    })
+    ))
     JSON.parse(response.body)["success"]
   rescue StandardError => e
     Rails.logger.error("Turnstile 検証エラー: #{e.class}: #{e.message}")
