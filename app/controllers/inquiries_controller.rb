@@ -38,11 +38,15 @@ class InquiriesController < ApplicationController
     http.use_ssl = true
     http.open_timeout = 3
     http.read_timeout = 3
-    response = http.post(uri.path, URI.encode_www_form(
-      "secret" => Rails.application.credentials.dig(:cloudflare, :turnstile_secret_key),
-      "response" => token,
-      "remoteip" => request.remote_ip
-    ))
+    response = http.post(
+      uri.path,
+      URI.encode_www_form(
+        "secret" => Rails.application.credentials.dig(:cloudflare, :turnstile_secret_key),
+        "response" => token,
+        "remoteip" => request.remote_ip
+      ),
+      "Content-Type" => "application/x-www-form-urlencoded"
+    )
     JSON.parse(response.body)["success"]
   rescue StandardError => e
     Rails.logger.error("Turnstile 検証エラー: #{e.class}: #{e.message}")
