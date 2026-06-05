@@ -82,6 +82,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 7
     needs: [scan_ruby, scan_js, lint, test]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     concurrency:
@@ -113,6 +114,10 @@ jobs:
 
       - name: Deploy with Kamal
         run: bin/kamal deploy
+
+      - name: Release Kamal lock
+        if: failure()
+        run: bin/kamal lock release
 
       - name: Remove master.key
         if: always()
