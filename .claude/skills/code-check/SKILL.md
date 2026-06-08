@@ -1,6 +1,6 @@
 ---
 name: code-check
-description: ユーザーが「品質チェック」「テストとlintを実行」「rspec」「rubocop」「コードチェック」と言ったとき、またはコード品質をテストとlintで確認したいときに使用するスキル。RSpec と RuboCop を実行して結果をレポートする。
+description: ユーザーが「品質チェック」「テストとlintを実行」「コードチェック」と言ったとき、またはコード品質をテストとlintで確認したいときに使用するスキル。RSpec と RuboCop を実行して結果をレポートする。
 ---
 
 # Code Check
