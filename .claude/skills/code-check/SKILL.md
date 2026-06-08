@@ -41,7 +41,7 @@ bundle exec rspec
 
 ### RuboCop
 - 検査ファイル数: X
-- オフェンス: X 件（エラー: X、警告: X）
+- オフェンス: X 件（error: X、warning: X、convention: X、refactor: X）
 
 ### RSpec
 - テスト数: X（成功: X、失敗: X、pending: X）
