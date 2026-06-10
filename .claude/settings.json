@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(./config/credentials.yml.enc)",
+      "Read(./storage/**)",
+      "Read(./log/**)",
+      "Read(./tmp/**)"
+    ]
+  }
+}
