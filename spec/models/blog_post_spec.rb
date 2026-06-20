@@ -93,6 +93,13 @@ RSpec.describe BlogPost, type: :model do
     end
   end
 
+  describe "view_count" do
+    it "デフォルト値は 0" do
+      post = BlogPost.create!(title: "Hello", slug: "hello", user: user)
+      expect(post.view_count).to eq(0)
+    end
+  end
+
   describe "#publish!" do
     it "ステータスが published になる" do
       post = BlogPost.create!(title: "Hello", slug: "hello", content: "本文", user: user)
