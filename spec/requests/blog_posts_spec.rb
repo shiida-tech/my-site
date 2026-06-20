@@ -57,6 +57,11 @@ RSpec.describe "BlogPosts", type: :request do
         expect { get blog_post_path(published_post.slug) }
           .not_to change { published_post.reload.view_count }
       end
+
+      it "クローラーがアクセスしても view_count は増加しない" do
+        expect { get blog_post_path(published_post.slug), headers: { "HTTP_USER_AGENT" => "Mozilla/5.0 (compatible; Googlebot/2.1)" } }
+          .not_to change { published_post.reload.view_count }
+      end
     end
   end
 end
