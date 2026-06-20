@@ -5,5 +5,6 @@ class BlogPostsController < ApplicationController
 
   def show
     @blog_post = BlogPost.published.find_by!(slug: params[:id])
+    @blog_post.increment!(:view_count) unless Current.user
   end
 end

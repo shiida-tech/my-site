@@ -15,6 +15,7 @@
           <th class="px-4 py-3 text-left text-slate-600 font-medium">カテゴリー</th>
           <th class="px-4 py-3 text-left text-slate-600 font-medium">ステータス</th>
           <th class="px-4 py-3 text-left text-slate-600 font-medium">公開日時</th>
+          <th class="px-4 py-3 text-left text-slate-600 font-medium">閲覧数</th>
           <th class="px-4 py-3 text-left text-slate-600 font-medium">操作</th>
         </tr>
       </thead>
@@ -33,6 +34,7 @@
             <td class="px-4 py-3 text-slate-500 text-xs">
               <%= post.published_at&.strftime("%Y/%m/%d %H:%M") || "-" %>
             </td>
+            <td class="px-4 py-3 text-slate-500 text-xs"><%= post.view_count %></td>
             <td class="px-4 py-3">
               <div class="flex gap-3">
                 <%= link_to "詳細", admin_blog_post_path(post),
@@ -45,7 +47,7 @@
         <% end %>
         <% if @blog_posts.empty? %>
           <tr>
-            <td colspan="5" class="px-4 py-8 text-center text-slate-400">記事がまだありません。</td>
+            <td colspan="6" class="px-4 py-8 text-center text-slate-400">記事がまだありません。</td>
           </tr>
         <% end %>
       </tbody>
